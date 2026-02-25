@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <script src="ApiMethods.js"></script>
+    <link rel="icon" href="images/logo.svg">
+    <link rel="stylesheet" href="Header.css">
+    <link rel="stylesheet" href="Register.css">
+</head>
+
+<body>
+     <!-- Header -->
+     <div class="header">
+        <div class="school-name">
+            <img src="images/logo.svg" alt="">
+            <h1>Colégio <span style="color: #2894AC;">Nexus</span></h1>
+        </div>
+        <div class="header-components">
+            <h3><a href="Initial.html">Home</a></h3>
+            <h3><a href="Initial.html#contact">Contatos</a></h3>
+            <h3><a href="#">Perfil</a></h3>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <container class="main-content">
+
+        <!-- Sing-In -->
+        <div class="signIn">
+            <div id="signIn-forms">
+                <h1>Entre na sua conta</h1>
+                <form action="" style="height: 60%;">
+                    <input type="text" placeholder="Usuário/Matrícula" required>
+                    <input type="password" placeholder="Senha" required>
+                    <h4><u><a href="">Esqueci a senha</a></u></h4>
+                    <button type="submit">Entrar</button>
+                    <h3><a href="Register.html">Aluno novo? <span style="font-style: oblique;">Cadastre-se</span></a></h3>
+                </form>
+            </div>
+            <img src="images/sign_in.png" alt="">
+        </div>
+    </container>
+
+    <script>
+            document.querySelector("form").addEventListener("submit", function (event) {
+                event.preventDefault();
+                const usuario = document.querySelector("input[type=text]").value;
+                const senha = document.querySelector("input[type=password]").value;
+                
+            });
+    </script>
+</body>
+</html>

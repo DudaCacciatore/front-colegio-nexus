@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #F9E0BC;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actionButton {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+    button {
+        width: 35vh;
+        margin-right: 7vh;
+    }
+}
+
+button {
+    background-color: #2894AC;
+    color: #fcf3e7;
+    border-radius: 15px;
+    padding: 10px;
+    width: 90%;
+    margin: 25px 0 15px 0;
+    border: none;
+    font-size: large;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #0e7a92;
+    cursor: pointer;
+}
+
+.search {
+    position: relative;
+    width: 900px;
+}
+
+.search img {
+    position: absolute;
+    left: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    width: 18px;
+    opacity: 0.6;
+}
+
+.search input {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px 20px 15px 45px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    background-color: #FCF3E7;
+    font-size: 14px;
+}
+
+
+h1 {
+    color: #092228;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Professor</title>
+    <link rel="icon" href="images/logo.svg">
+    <link rel="stylesheet" href="Header.css">
+    <link rel="stylesheet" href="Teacher.css">
+    <link rel="stylesheet" href="PopUp.css">
+    <script src="ApiMethods.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="school-name">
+            <img src="images/logo.svg" alt="">
+            <h1>Colégio <span style="color: #2894AC;">Nexus</span></h1>
+        </div>
+        <div class="header-components">
+            <h3><a href="Initial.html">Home</a></h3>
+            <h3><a href="Initial.html#contact">Contatos</a></h3>
+            <h3><a href="Login.html">Perfil</a></h3>
+        </div>
+    </div>
+
+    <!-- Main content-->
+    <container class="main-content">
+
+        <div class="actions">
+            <section class="search">
+                <img src="images/search.png" alt="">
+                <input type="text" placeholder="Pesquisar matrículas">
+            </section>
+    
+            <section class="filter">
+                <select>
+                    <option value="Disciplinas">Disciplinas</option>
+                    <option value="Todas">Todas</option>
+                    <option value="Matematica">Matemática</option>
+                    <!-- As matérias tem q vir da API - list da tabela disciplina - as q tao aq é só para exemplo do css, dps tem q apagar-->
+                </select>
+            </section>
+        </div>
+    
+        <div class="students-info">
+            <h1>Alunos</h1>
+        </div>
+        <div id="popupInfo" class="popUp">
+            <div class="popInfo">
+                <h1>Observação</h1>
+                <textarea placeholder="Adicionar observação"></textarea>
+                <button>Adicionar</button>
+                <button onclick="fecharPopup('popupInfo')">Cancelar</button>
+            </div>
+        </div>
+        <div id="popupGrades" class="popUp">
+            <div class="popGrades">
+                <h1>Lançar Notas</h1>
+    
+                <section>
+                    <h2>N1</h2>
+                    <input type="number" required>
+                </section>
+    
+                <section>
+                    <h2>N2</h2>
+                    <input type="number" required>
+                </section>
+    
+                <section>
+                    <h2>Média final</h2>
+                    <input type="number" required>
+                </section>
+    
+                <button>Lançar</button>
+                <button onclick="fecharPopup('popupGrades')">Cancelar</button>
+            </div>
+        </div>
+    
+        <!-- BOTÕES PARA ABRIR -->
+
+        <!--Esses onclick nao vao ser botao, vão ser ligados aos textos que estarão na tabela -->
+        <!-- <button onclick="abrirPopup('popupInfo')">Abrir observações</button>
+        <button onclick="abrirPopup('popupGrades')">Abrir notas</button>     -->
+    </container>
+</body>
+</html>

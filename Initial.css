@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #F9E0BC;
+}
+
+a {
+    text-decoration: none;
+}
+
+.first-content {
+    display: flex;
+    align-items: center;
+    padding: 60px 5% 50px 10%;
+    gap: 40px;
+}
+
+#first-informations {
+    flex: 1;
+}
+
+#first-informations h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#first-informations p {
+    color: #555;
+    line-height: 1.6;
+    max-width: 500px;
+    font-size: 20px;
+}
+
+#right-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    position: relative;
+    background-color: #ED7921; 
+    height: 350px;
+    margin-right: -5%;
+    border-radius: 200px 0 0 200px; 
+}
+
+#first-image {
+    width: 290px; 
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 340px;
+}
+
+.second-content {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.second-content h1 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+#cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.individual-cards {
+    background-color: #ED7921;
+    color: white;
+    padding:50px 160px;
+    border-radius: 15px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.individual-cards:hover {
+    background-color: #1faab4;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.third-content {
+    background-color: #2894AC;
+    margin: 50px auto;
+    width: 85%;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    gap: 40px;
+    color: white;
+}
+
+.third-content img {
+    width: 300px;
+    border-radius: 30px;
+}
+
+.third-content article p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+
+#contact {
+    padding: 2%;
+    background-color: #092228;
+    display: flex;
+    color: #c4c2c2;
+    font-size: 15px;
+    justify-content: space-around;
+}
+
+.contact-infos {
+    width: 30%;
+}
+
+.more-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+article {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#contact-tittle, #hours-tittle {
+    color: #fdf9f3;
+    margin: 0;
+    font-size: 30px;
+}
+
+#area-adm {
+    font-size: 20px;
+    color: #fdf9f3;
+}

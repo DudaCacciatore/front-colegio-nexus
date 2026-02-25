@@ -1,0 +1,43 @@
+.header {
+    background-color: #fcf3e7;
+    text-align: center;
+    border-radius: 50px;
+    display: flex;
+    margin: 2% 2% 0 2%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3%;
+}
+
+.header-components {
+    width: 20%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    a{
+        color: #2894AC;
+        text-decoration: none;
+    }
+
+    img {
+        width: 2%;
+        height: auto;
+    }
+}
+
+.school-name {
+    width: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #ED7921;
+
+    img {
+        width: 12%;
+        height: auto;
+    }
+}

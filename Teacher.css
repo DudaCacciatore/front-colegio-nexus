@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #F9E0BC;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+    margin-left: 300px;
+    margin-bottom: 40px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    width: 93.5%;
+    margin: 0% 2% 0 2%;
+}
+
+
+.actionButton {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+    button {
+        width: 35vh;
+        margin-right: 7vh;
+    }
+}
+
+.search {
+    position: relative;
+    width: 900px;
+}
+
+.search input {
+    width: 100%;
+    padding: 15px 20px 15px 45px;
+    border-radius: 30px;
+    border: none;
+    background-color: #FCF3E7;
+    font-size: 14px;
+    height: 50px;
+}
+
+select {
+    width: 220px;
+    height: 50px; 
+    padding: 0 15px;
+    border: none;
+    background-color: #2894AC;
+    color: white;
+    border-radius: 30px;
+    font-size: 15px;
+}
+
+.search img {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    opacity: 0.6;
+}
+
+.students-info {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1 {
+    color: #092228;
+}
