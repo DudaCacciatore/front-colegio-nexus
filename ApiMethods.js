@@ -82,3 +82,26 @@ function redirecionar(nextPage) {
         window.location.href = nextPage;
     }, 1500);
 }
+
+
+// Redirecionamento de abas - admin
+function showSection(id, botaoClicado) {
+
+    const secoes = document.querySelectorAll(".secao");
+    secoes.forEach(secao => {
+        secao.style.display = "none";
+    });
+
+    const botoes = document.querySelectorAll(".tabs button");
+    botoes.forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    document.getElementById(id).style.display = "block";
+
+    botaoClicado.classList.add("active");
+}
+
+window.onload = function () {
+    showSection("admins", document.querySelector(".tabs button"));
+};

@@ -26,217 +26,167 @@
       </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Main content -->
     <container class="main-content">
 
-      <!-- Professores -->
-      <h2>Professores</h2>
-      <div class="actionButton">
-        <button onclick="abrirPopup('popupProfessor')">
-          Cadastrar Professor
-        </button>
+      <div class="tabs">
+        <button onclick="showSection('admins', this)" class="active">Administradores</button>
+        <button onclick="showSection('professores', this)">Professores</button>
+        <button onclick="showSection('alunos', this)">Alunos</button>
       </div>
-  
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Professor</th>
-              <th>Disciplina</th>
-              <th>Usuário</th>
-              <th>Senha</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-  
-          <tbody id="tabela-body">
-            <!--aqui é exemplo de como tem q ficar -> passar nesse formato para os métodos da api-->
-            <tr>
-              <th>Ana</th>
-              <th>Matematica</th>
-              <th>ana.teste</th>
-              <th>1234</th>
-              <th>
-                <img
-                  src="imagens/edit_icon.png"
-                  alt="edit"
-                  id="edit-icon"
-                  title="Editar"
-                />
-                <img
-                  src="imagens/trash_can_icon.png"
-                  alt="delete"
-                  id="delete-icon"
-                  title="Excluir"
-                />
-              </th>
-            </tr>
-  
-            <!--aqui tem q vir as infos da api-->
-          </tbody>
-        </table>
-      </div>
-  
-      <!-- Pop-Up Cadastrar Professor-->
-      <div id="popupProfessor" class="popUp">
-        <div class="popRegister">
-          <h1>Cadastrar Professor</h1>
-          <section>
-            <h2>Nome</h2>
-            <input type="text" required />
-          </section>
-          <section>
-            <h2>Disciplina</h2>
-            <input type="text" required />
-          </section>
-          <section>
-            <h2>Usuário</h2>
-            <input type="text" required />
-          </section>
-          <section>
-            <h2>Senha</h2>
-            <input type="password" required />
-          </section>
-          <section>
-            <button onclick="fecharPopup('popupProfessor')">Cancelar</button>
-            <button onclick="fecharPopup('popupProfessor')">Cadastrar</button>
-          </section>
+
+      <!-- Admin -->
+      <div id="admins" class="secao">
+        <div class="actionButton">
+          <button onclick="abrirPopup('popupAdm')">
+            Cadastrar Admin
+          </button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Usuário</th>
+                <th>Senha</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-admins"></tbody>
+          </table>
         </div>
       </div>
-  
-      <!-- Alunos -->
-      <h2>Alunos</h2>
-      <div class="actionButton">
-        <button onclick="abrirPopup('popupAluno')">Cadastrar Aluno</button>
-      </div>
-  
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Matrícula</th>
-              <th>Email</th>
-              <th>Senha</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-  
-          <tbody id="tabela-body">
-            <!--aqui é exemplo de como tem q ficar -> passar nesse formato para os métodos da api-->
-            <tr>
-              <th>Ana</th>
-              <th>Matematica</th>
-              <th>ana.teste</th>
-              <th>1234</th>
-              <th>
-                <img
-                  src="imagens/edit_icon.png"
-                  alt="edit"
-                  id="edit-icon"
-                  title="Editar"
-                />
-                <img
-                  src="imagens/trash_can_icon.png"
-                  alt="delete"
-                  id="delete-icon"
-                  title="Excluir"
-                />
-              </th>
-            </tr>
-  
-            <!--aqui tem q vir as infos da api-->
-          </tbody>
-        </table>
-      </div>
-  
-      <!-- Pop-Up Cadastrar Aluno-->
-      <div id="popupAluno" class="popUp">
-        <div class="popRegister">
-          <h1>Cadastrar Aluno</h1>
-          <section>
-            <h2>Nome</h2>
-            <input type="text" required />
-          </section>
-          <section>
-            <h2>Matrícula</h2>
-            <input type="text" required />
-          </section>
-          <section>
-            <h2>E-mail</h2>
-            <input type="email" required />
-          </section>
-          <section>
-            <h2>Senha</h2>
-            <input type="password" required />
-          </section>
-          <section>
-            <button onclick="fecharPopup('popupAluno')">Cancelar</button>
-            <button onclick="fecharPopup('popupAluno')">Cadastrar</button>
-          </section>
-        </div>
-      </div>
-  
-      <!--Administradores-->
-      <h2>Administradores</h2>
-      <div class="actionButton">
-        <button onclick="abrirPopup('popupAdm')">Cadastrar Admin</button>
-      </div>
-  
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Usuário</th>
-              <th>Senha</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-  
-          <tbody id="tabela-body">
-            <!--aqui é exemplo de como tem q ficar -> passar nesse formato para os métodos da api-->
-            <tr>
-              <th>Ana</th>
-              <th>1234</th>
-              <th id="acoes">
-                <img
-                  src="imagens/edit_icon.png"
-                  alt="edit"
-                  id="edit-icon"
-                  title="Editar"
-                />
-                <img
-                  src="imagens/trash_can_icon.png"
-                  alt="delete"
-                  id="delete-icon"
-                  title="Excluir"
-                />
-              </th>
-            </tr>
-  
-            <!--aqui tem q vir as infos da api-->
-          </tbody>
-        </table>
-      </div>
-  
-      <!-- Pop-Up Cadastrar Admin-->
+
       <div id="popupAdm" class="popUp">
         <div class="popRegister">
           <h1>Cadastrar Admin</h1>
+      
           <section>
             <h2>Nome</h2>
             <input type="text" required />
           </section>
+      
           <section>
             <h2>Senha</h2>
             <input type="password" required />
           </section>
+      
           <section>
             <button onclick="fecharPopup('popupAdm')">Cancelar</button>
             <button onclick="fecharPopup('popupAdm')">Cadastrar</button>
           </section>
         </div>
+      </div>      
+
+      <!-- Professores -->
+      <div id="professores" class="secao">
+        <div class="actionButton">
+          <button onclick="abrirPopup('popupProfessor')">
+            Cadastrar Professor
+          </button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Professor</th>
+                <th>Disciplina</th>
+                <th>Usuário</th>
+                <th>Senha</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-professores"></tbody>
+          </table>
+        </div>
       </div>
+
+      <div id="popupProfessor" class="popUp">
+        <div class="popRegister">
+          <h1>Cadastrar Professor</h1>
+      
+          <section>
+            <h2>Nome</h2>
+            <input type="text" required />
+          </section>
+      
+          <section>
+            <h2>Disciplina</h2>
+            <input type="text" required />
+          </section>
+      
+          <section>
+            <h2>Usuário</h2>
+            <input type="text" required />
+          </section>
+      
+          <section>
+            <h2>Senha</h2>
+            <input type="password" required />
+          </section>
+      
+          <section>
+            <button onclick="fecharPopup('popupProfessor')">Cancelar</button>
+            <button onclick="fecharPopup('popupProfessor')">Cadastrar</button>
+          </section>
+        </div>
+      </div>      
+
+      <!-- Alunos -->
+      <div id="alunos" class="secao">
+        <div class="actionButton">
+          <button onclick="abrirPopup('popupAluno')">
+            Cadastrar Aluno
+          </button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Matrícula</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-alunos"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="popupAluno" class="popUp">
+        <div class="popRegister">
+          <h1>Cadastrar Aluno</h1>
+      
+          <section>
+            <h2>Nome</h2>
+            <input type="text" required />
+          </section>
+      
+          <section>
+            <h2>Matrícula</h2>
+            <input type="text" required />
+          </section>
+      
+          <section>
+            <h2>E-mail</h2>
+            <input type="email" required />
+          </section>
+      
+          <section>
+            <h2>Senha</h2>
+            <input type="password" required />
+          </section>
+      
+          <section>
+            <button onclick="fecharPopup('popupAluno')">Cancelar</button>
+            <button onclick="fecharPopup('popupAluno')">Cadastrar</button>
+          </section>
+        </div>
+      </div>      
     </container>
   </body>
-</html>
+</html>  
