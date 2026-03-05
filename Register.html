@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <link rel="icon" href="images/logo.svg">
     <link rel="stylesheet" href="Header.css">
     <link rel="stylesheet" href="Register.css">
+    <script src="ApiMethods.js"></script>
 </head>
 
 <body>
     <!-- Header -->
-        <div class="header">
+    <div class="header">
         <div class="school-name">
             <img src="images/logo.svg" alt="">
             <h1>Colégio <span style="color: #2894AC;">Nexus</span></h1>
@@ -30,17 +32,30 @@
         <div class="signIn">
             <div id="signIn-forms">
                 <h1>Bem vindo(a)!</h1>
-                <form action="">
-                    <input type="text" placeholder="Nome completo" required>
-                    <input type="text" placeholder="Matrícula" required>
-                    <input type="email" placeholder="E-mail" required>
-                    <input type="password" placeholder="Senha" required>
+                <form onsubmit="handleRegister(event)">
+                    <input type="text" id="fullName" placeholder="Nome completo" required>
+                    <input type="text" id="registration" placeholder="Matrícula" required>
+                    <input type="email" id="email" placeholder="E-mail" required>
+                    <input type="password" id="password" placeholder="Senha" required>
                     <button type="submit">Cadastrar</button>
-                    <h3><a href="Login.html">Já é aluno? <span style="font-style:oblique;">Entre aqui</span></a></h3>
                 </form>
-            </div>  
+            </div>
             <img src="images/sign_in.png" alt="">
         </div>
-    </container>    
+    </container>
+
+    <script>
+        function handleRegister(event) {
+            event.preventDefault();
+            const fullName = document.getElementById("fullName").value;
+            const registration = document.getElementById("registration").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            registerStudent(fullName, registration, email, password);
+        }
+
+    </script>
 </body>
+
 </html>

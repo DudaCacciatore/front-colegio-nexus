@@ -13,7 +13,6 @@
 </head>
 
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="school-name">
             <img src="images/logo.svg" alt="">
@@ -26,7 +25,6 @@
         </div>
     </div>
 
-    <!-- Main content-->
     <container class="main-content">
 
         <div class="actions">
@@ -48,6 +46,21 @@
         <div class="students-info">
             <h1>Alunos</h1>
         </div>
+
+        <!-- Adicionar tabela aqui -->
+        <table id="studentsTable" width="100%" border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Matrícula</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os alunos serão inseridos aqui pela função listStudents() -->
+            </tbody>
+        </table>
+    
         <div id="popupInfo" class="popUp">
             <div class="popInfo">
                 <h1>Observação</h1>
@@ -56,6 +69,7 @@
                 <button onclick="fecharPopup('popupInfo')">Cancelar</button>
             </div>
         </div>
+
         <div id="popupGrades" class="popUp">
             <div class="popGrades">
                 <h1>Lançar Notas</h1>
@@ -79,12 +93,30 @@
                 <button onclick="fecharPopup('popupGrades')">Cancelar</button>
             </div>
         </div>
-    
+
         <!-- BOTÕES PARA ABRIR -->
 
         <!--Esses onclick nao vao ser botao, vão ser ligados aos textos que estarão na tabela -->
         <!-- <button onclick="abrirPopup('popupInfo')">Abrir observações</button>
         <button onclick="abrirPopup('popupGrades')">Abrir notas</button>     -->
+
     </container>
+
+    <!-- SCRIPT PARA FAZER A TABELA FUNCIONAR -->
+    <script>
+
+        token = localStorage.getItem("token");
+
+        window.alert(token);
+
+        if(token != null) {
+            window.onload = function () {
+                listStudents(token);
+            };
+        } else {
+            window.location.href = "Initial.html";
+        }
+    </script>
+
 </body>
 </html>
