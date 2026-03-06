@@ -470,3 +470,10 @@ function cadastrarProfessor(event) {
 
     fecharPopup("popupProfessor");
 }
+
+function clearSearch() {
+
+    document.getElementById("pesquisaMatricula").value = "";
+
+    listStudents()
+}

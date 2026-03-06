@@ -29,16 +29,23 @@
 
         <!-- Gerar boletim -->
         <div class="actionButton">
-            <button>Gerar boletim</button>
+            <button id="boletimButtom">Gerar boletim</button>
         </div>
-
-        <!-- Aqui vem a tabela que vai ser feita no js -->
 
         <!-- Observações -->
         <h1>Observações</h1>
         <section class="search">
             <img src="images/search.png" alt="">
-            <input type="text" placeholder="Pesquisar observações por professor">
+            <form>
+                <input type="text" placeholder="Pesquisar observações por professor">
+                <button type="button"
+                    onclick="findStudent(document.getElementById('').value)">
+                    Buscar
+                </button>
+                <button type="button" onclick="clearSearch()">
+                    Limpar
+                </button>
+            </form>
         </section>
 
         <!-- Tem q colocar os bloquinhos com as observações -->
