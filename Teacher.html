@@ -35,34 +35,22 @@
 
     <div class="main-content">
 
-
         <!-- AÇÕES -->
-
         <div class="actions">
-
             <section class="search">
-
-                <img src="images/search.png">
-
-                <form action="">
-                    <input id="pesquisaMatricula" on type="text" placeholder="Pesquisar matrículas">
-                    <button type="button" onclick="findStudent(document.getElementById('pesquisaMatricula').value)">Buscar</button>
+                <img src="images/search.png" class="search-icon">
+                <form>
+                    <input id="pesquisaMatricula" type="text" placeholder="Pesquisar matrículas">
+                    <button type="button"
+                        onclick="findStudent(document.getElementById('pesquisaMatricula').value)">
+                        Buscar
+                    </button>
+                    <button type="button" onclick="clearSearch()">
+                        Limpar
+                    </button>
                 </form>
             </section>
-
-
-            <section class="filter">
-
-                <select>
-                    <option>Disciplinas</option>
-                    <option>Todas</option>
-                    <option>Matemática</option>
-                </select>
-
-            </section>
-
         </div>
-
 
         <div class="students-info">
             <h1>Alunos</h1>
@@ -100,7 +88,7 @@
                 <h1>Observação</h1>
 
                 <textarea id="textoObservacao" placeholder="Adicionar observação">
-</textarea>
+                </textarea>
 
                 <button onclick="adicionarObservacao()">
                     Adicionar
