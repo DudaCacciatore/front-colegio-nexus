@@ -44,10 +44,14 @@
 
                 <img src="images/search.png">
 
-                <form action="">
-                    <input id="pesquisaMatricula" on type="text" placeholder="Pesquisar matrículas">
-                    <button type="button" onclick="findStudent(document.getElementById('pesquisaMatricula').value)">Buscar</button>
+                <form onsubmit="event.preventDefault()">
+                    <input id="pesquisaMatricula" type="text" placeholder="Pesquisar matrícula">
+                    <button type="button"
+                        onclick="findStudent(document.getElementById('pesquisaMatricula').value)">
+                        Buscar
+                    </button>
                 </form>
+
             </section>
 
 
@@ -78,6 +82,7 @@
                 <tr>
                     <th>Nome</th>
                     <th>Matrícula</th>
+                    <th>E-mail</th>
                     <th>Ações</th>
                 </tr>
 
@@ -89,6 +94,41 @@
 
         </table>
 
+        <!-- POPUP EDITAR ALUNO -->
+
+<div id="popupAluno" class="popUp">
+
+    <div class="popAluno">
+
+        <h1>Editar Aluno</h1>
+
+        <section>
+            <h2>Nome</h2>
+            <input id="studentName" type="text" required>
+        </section>
+
+        <section>
+            <h2>Email</h2>
+            <input id="studentEmail" type="email" required>
+        </section>
+
+        <section>
+            <h2>Senha</h2>
+            <input id="studentPassword" type="password">
+        </section>
+
+        <button onclick="cadastrarAluno(event)">
+            Salvar
+        </button>
+
+        <button onclick="closePopup('popupAluno')">
+            Cancelar
+        </button>
+
+    </div>
+
+</div>
+
 
 
         <!-- POPUP OBSERVAÇÃO -->
@@ -99,14 +139,13 @@
 
                 <h1>Observação</h1>
 
-                <textarea id="textoObservacao" placeholder="Adicionar observação">
-</textarea>
+                <textarea id="textoObservacao" placeholder="Adicionar observação"></textarea>
 
                 <button onclick="adicionarObservacao()">
                     Adicionar
                 </button>
 
-                <button onclick="fecharPopup('popupInfo')">
+                <button onclick="closePopup('popupInfo')">
                     Cancelar
                 </button>
 
@@ -143,7 +182,7 @@
                     Lançar
                 </button>
 
-                <button onclick="fecharPopup('popupGrades')">
+                <button onclick="closePopup('popupGrades')">
                     Cancelar
                 </button>
 
@@ -164,7 +203,6 @@
         if (!token) {
 
             alert("Você precisa fazer login");
-
             window.location.href = "Login.html";
 
         } else {
@@ -172,7 +210,6 @@
             listStudents();
 
         }
-
 
     </script>
 
