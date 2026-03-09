@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar</title>
-
-    <script src="ApiMethods.js"></script>
-
     <link rel="icon" href="images/logo.svg">
     <link rel="stylesheet" href="Header.css">
     <link rel="stylesheet" href="Register.css">
+
+    <script src="ApiMethods.js"></script>
 </head>
 
 <body>
@@ -60,9 +60,39 @@
     </div>
 
     <!-- Script no final da página -->
-     
+
     <script>
         const form = document.querySelector("#signIn-forms form");
+
+        function verifyUser(user, password) {
+
+            alert("Verificando usuário...");
+
+            const emailRegexStudent = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const atStartRegexAdmin = /^@[a-zA-Z0-9_]+$/;
+            const teacherRegex = /^[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+$/;
+
+            if (emailRegexStudent.test(user)) {
+
+                loginStudent(user, password);
+
+            }
+            else if (atStartRegexAdmin.test(user)) {
+
+                loginAdmin(user, password);
+
+            }
+            else if (teacherRegex.test(user)) {
+
+                 (user, password);
+
+            }
+            else {
+
+                alert("Formato de usuário inválido");
+
+            }
+        }
 
         form.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -75,4 +105,5 @@
     </script>
 
 </body>
+
 </html>

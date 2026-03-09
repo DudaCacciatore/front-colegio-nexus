@@ -1,192 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Área do Administrador</title>
-    <link rel="stylesheet" href="Header.css" />
-    <link rel="stylesheet" href="Admin.css">
-    <link rel="stylesheet" href="Tables.css">
-    <link rel="icon" href="images/logo.svg">
-    <link rel="stylesheet" href="PopUp.css" />
-    <script src="ApiMethods.js"></script>
-  </head>
 
-  <body>
-     <!-- Header -->
-     <div class="header">
-      <div class="school-name">
-        <img src="images/logo.svg" alt="">
-        <h1>Colégio <span style="color: #2894AC;">Nexus</span></h1>
-      </div>
-      <div class="header-components">
-        <h3><a href="Initial.html">Home</a></h3>
-        <h3><a href="Initial.html#contact">Contatos</a></h3>
-        <h3><a href="Login.html">Perfil</a></h3>
-      </div>
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Área do Administrador</title>
+
+  <link rel="stylesheet" href="Header.css">
+  <link rel="stylesheet" href="Admin.css">
+  <link rel="stylesheet" href="Tables.css">
+  <link rel="stylesheet" href="PopUp.css">
+
+  <link rel="icon" href="images/logo.svg">
+
+  <script src="ApiMethods.js"></script>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div class="school-name">
+      <img src="images/logo.svg">
+      <h1>Colégio <span style="color:#2894AC;">Nexus</span></h1>
     </div>
 
-    <!-- Main content -->
-    <container class="main-content">
+    <div class="header-components">
+      <h3><a href="Initial.html">Home</a></h3>
+      <h3><a href="Initial.html#contact">Contatos</a></h3>
+      <h3><a href="Login.html">Perfil</a></h3>
+    </div>
 
-      <div class="tabs">
-        <button onclick="showSection('admins', this)" class="active">Administradores</button>
-        <button onclick="showSection('professores', this)">Professores</button>
-        <button onclick="showSection('alunos', this)">Alunos</button>
+  </div>
+
+
+
+  <!-- MAIN -->
+
+  <container class="main-content">
+
+    <div class="tabs">
+
+      <button onclick="showSection('admins', this)" class="active">
+        Administradores
+      </button>
+
+      <button onclick="showSection('professores', this)">
+        Professores
+      </button>
+
+      <button onclick="showSection('alunos', this)">
+        Alunos
+      </button>
+
+    </div>
+
+
+
+    <!-- ADMINS -->
+
+    <div id="admins" class="secao">
+
+      <div class="actionButton">
+
+        <button onclick="openPopup('popupAdm')">
+          Cadastrar Admin
+        </button>
+
       </div>
 
-      <!-- Admin -->
-      <div id="admins" class="secao">
-        <div class="actionButton">
-          <button onclick="abrirPopup('popupAdm')">
-            Cadastrar Admin
-          </button>
-        </div>
+      <div class="table-container">
 
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Usuário</th>
-                <th>Senha</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tabela-admins"></tbody>
-          </table>
-        </div>
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>ID</th>
+              <th>Usuário</th>
+              <th>Ações</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="tabela-admins"></tbody>
+
+        </table>
+
       </div>
 
-      <div id="popupAdm" class="popUp">
-        <div class="popRegister">
-          <h1>Cadastrar Admin</h1>
-      
-          <section>
-            <h2>Nome</h2>
-            <input type="text" required />
-          </section>
-      
-          <section>
-            <h2>Senha</h2>
-            <input type="password" required />
-          </section>
-      
-          <section>
-            <button onclick="fecharPopup('popupAdm')">Cancelar</button>
-            <button onclick="fecharPopup('popupAdm')">Cadastrar</button>
-          </section>
-        </div>
-      </div>      
+    </div>
 
-      <!-- Professores -->
-      <div id="professores" class="secao">
-        <div class="actionButton">
-          <button onclick="abrirPopup('popupProfessor')">
-            Cadastrar Professor
-          </button>
-        </div>
 
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Professor</th>
-                <th>Disciplina</th>
-                <th>Usuário</th>
-                <th>Senha</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tabela-professores"></tbody>
-          </table>
-        </div>
-      </div>
 
-      <div id="popupProfessor" class="popUp">
-        <div class="popRegister">
-          <h1>Cadastrar Professor</h1>
-      
-          <section>
-            <h2>Nome</h2>
-            <input type="text" required />
-          </section>
-      
-          <section>
-            <h2>Disciplina</h2>
-            <input type="text" required />
-          </section>
-      
+    <!-- POPUP ADMIN -->
+
+    <div id="popupAdm" class="popUp">
+
+      <div class="popRegister">
+
+        <h1>Admin</h1>
+
+        <form id="formAdmin">
+
           <section>
             <h2>Usuário</h2>
-            <input type="text" required />
+            <input id="adminUsuario" type="text" required>
           </section>
-      
+
           <section>
             <h2>Senha</h2>
-            <input type="password" required />
+            <input id="adminSenha" type="password" required>
           </section>
-      
+
           <section>
-            <button onclick="fecharPopup('popupProfessor')">Cancelar</button>
-            <button onclick="fecharPopup('popupProfessor')">Cadastrar</button>
+
+            <button type="button" onclick="closePopup('popupAdm')">
+              Cancelar
+            </button>
+
+            <button type="submit">
+              Salvar
+            </button>
+
           </section>
-        </div>
-      </div>      
 
-      <!-- Alunos -->
-      <div id="alunos" class="secao">
-        <div class="actionButton">
-          <button onclick="abrirPopup('popupAluno')">
-            Cadastrar Aluno
-          </button>
-        </div>
+        </form>
 
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Matrícula</th>
-                <th>Email</th>
-                <th>Senha</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tabela-alunos"></tbody>
-          </table>
-        </div>
       </div>
 
-      <div id="popupAluno" class="popUp">
-        <div class="popRegister">
-          <h1>Cadastrar Aluno</h1>
-      
+    </div>
+
+
+
+    <!-- PROFESSORES -->
+
+    <div id="professores" class="secao">
+
+      <div class="actionButton">
+
+        <button onclick="openPopup('popupProfessor')">
+          Cadastrar Professor
+        </button>
+
+      </div>
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Professor</th>
+              <th>Disciplina</th>
+              <th>Usuário</th>
+              <th>Ações</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="tabela-professores"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- POPUP PROFESSOR -->
+
+    <div id="popupProfessor" class="popUp">
+
+      <div class="popRegister">
+
+        <h1>Professor</h1>
+
+        <form id="formTeacher">
+
           <section>
             <h2>Nome</h2>
-            <input type="text" required />
+            <input id="nomeProfessor" type="text" required>
           </section>
-      
+
           <section>
-            <h2>Matrícula</h2>
-            <input type="text" required />
+            <h2>Disciplina</h2>
+            <input id="disciplinaProfessor" type="text" required>
           </section>
-      
+
           <section>
-            <h2>E-mail</h2>
-            <input type="email" required />
+            <h2>Usuário</h2>
+            <input id="usuarioProfessor" type="text" required>
           </section>
-      
+
           <section>
             <h2>Senha</h2>
-            <input type="password" required />
+            <input id="senhaProfessor" type="password" required>
           </section>
-      
+
           <section>
-            <button onclick="fecharPopup('popupAluno')">Cancelar</button>
-            <button onclick="fecharPopup('popupAluno')">Cadastrar</button>
+
+            <button type="button" onclick="closePopup('popupProfessor')">
+              Cancelar
+            </button>
+
+            <button type="submit">
+              Salvar
+            </button>
+
           </section>
-        </div>
-      </div>      
-    </container>
-  </body>
-</html>  
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ALUNOS -->
+
+    <div id="alunos" class="secao">
+
+      <div class="actionButton">
+
+        <button onclick="openPopup('popupAluno')">
+          Cadastrar Aluno
+        </button>
+
+      </div>
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Nome</th>
+              <th>Matrícula</th>
+              <th>Email</th>
+              <th>Ações</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="tabela-alunos"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- POPUP ALUNO -->
+
+    <div id="popupAluno" class="popUp">
+
+      <div class="popRegister">
+
+        <h1>Aluno</h1>
+
+        <form id="formStudent">
+
+          <section>
+            <h2>Nome</h2>
+            <input id="studentName" type="text" required>
+          </section>
+
+          <section>
+            <h2>Email</h2>
+            <input id="studentEmail" type="email" required>
+          </section>
+
+          <section>
+            <h2>Senha</h2>
+            <input id="studentPassword" type="password" required>
+          </section>
+
+          <section>
+
+            <button type="button" onclick="closePopup('popupAluno')">
+              Cancelar
+            </button>
+
+            <button type="submit">
+              Salvar
+            </button>
+
+          </section>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </container>
+
+
+
+  <script>
+
+    // LOAD DATA
+
+    window.onload = function () {
+
+      const firstButton = document.querySelector(".tabs button");
+
+      if (firstButton) {
+        showSection("admins", firstButton);
+      }
+
+      listAdmins();
+      listTeachers();
+      listStudents();
+
+    };
+
+
+
+    // ADMIN FORM
+
+    document.getElementById("formAdmin").onsubmit = function (e) {
+
+      e.preventDefault();
+
+      let usuario = document.getElementById("adminUsuario").value;
+      let senha = document.getElementById("adminSenha").value;
+
+      if (editingAdminId) {
+
+        updateAdmin(editingAdminId, usuario, senha);
+
+      } else {
+
+        registerAdmin(null, usuario, senha);
+
+      }
+
+    };
+
+
+
+    // TEACHER FORM
+
+    document.getElementById("formTeacher").onsubmit = function (e) {
+
+      e.preventDefault();
+
+      let nome = document.getElementById("nomeProfessor").value;
+      let disciplina = document.getElementById("disciplinaProfessor").value;
+      let usuario = document.getElementById("usuarioProfessor").value;
+      let senha = document.getElementById("senhaProfessor").value;
+
+      registerTeacher(nome, usuario, senha, disciplina);
+
+    };
+
+
+
+    // STUDENT FORM
+
+    document.getElementById("formStudent").onsubmit = function (e) {
+
+      e.preventDefault();
+
+      let nome = document.getElementById("studentName").value;
+      let email = document.getElementById("studentEmail").value;
+      let senha = document.getElementById("studentPassword").value;
+
+      if (editingStudentId) {
+
+        updateStudent(editingStudentId, nome, email, senha);
+
+      } else {
+
+        registerStudent(nome, email, senha);
+
+      }
+
+    };
+
+  </script>
+
+</body>
+
+</html>

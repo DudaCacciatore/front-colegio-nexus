@@ -15,60 +15,72 @@ body {
     align-items: center;
 }
 
+#boletimButtom{
+    background-color: #2894AC;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
 .actionButton {
     width: 100%;
     display: flex;
     justify-content: end;
-
-    button {
-        width: 35vh;
-        margin-right: 7vh;
-    }
 }
 
-button {
-    background-color: #2894AC;
-    color: #fcf3e7;
-    border-radius: 15px;
-    padding: 10px;
-    width: 90%;
-    margin: 25px 0 15px 0;
-    border: none;
-    font-size: large;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-    background-color: #0e7a92;
-    cursor: pointer;
+.actionButton button {
+    width: 35vh;
+    margin-right: 7vh;
 }
 
 .search {
     position: relative;
     width: 900px;
+    align-items: center;
+}
+
+.search form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search input {
+    width: 100%;
+    padding: 15px 20px 15px 45px;
+    border-radius: 30px;
+    border: none;
+    background-color: #FCF3E7;
+    font-size: 14px;
+    height: 50px;
 }
 
 .search img {
     position: absolute;
     left: 15px;
-    top: 70%;
+    top: 50%;
     transform: translateY(-50%);
     width: 18px;
     opacity: 0.6;
 }
 
-.search input {
-    width: 100%;
-    margin-top: 30px;
-    padding: 15px 20px 15px 45px;
-    border-radius: 30px;
-    outline: none;
+.search button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
     border: none;
-    background-color: #FCF3E7;
-    font-size: 14px;
+    background-color: #2894AC;
+    color: white;
+    cursor: pointer;
 }
 
+.search button:hover {
+    background-color: #1f7c91;
+}
 
 h1 {
     color: #092228;
+    margin-bottom: 20px;
 }

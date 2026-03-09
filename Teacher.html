@@ -5,118 +5,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Professor</title>
+
     <link rel="icon" href="images/logo.svg">
+
     <link rel="stylesheet" href="Header.css">
     <link rel="stylesheet" href="Teacher.css">
     <link rel="stylesheet" href="PopUp.css">
+
     <script src="ApiMethods.js"></script>
 </head>
 
 <body>
+
     <div class="header">
+
         <div class="school-name">
-            <img src="images/logo.svg" alt="">
-            <h1>Colégio <span style="color: #2894AC;">Nexus</span></h1>
+            <img src="images/logo.svg">
+            <h1>Colégio <span style="color:#2894AC;">Nexus</span></h1>
         </div>
+
         <div class="header-components">
             <h3><a href="Initial.html">Home</a></h3>
             <h3><a href="Initial.html#contact">Contatos</a></h3>
             <h3><a href="Login.html">Perfil</a></h3>
         </div>
+
     </div>
 
-    <container class="main-content">
 
+    <div class="main-content">
+
+        <!-- AÇÕES -->
         <div class="actions">
             <section class="search">
-                <img src="images/search.png" alt="">
-                <input type="text" placeholder="Pesquisar matrículas">
-            </section>
-    
-            <section class="filter">
-                <select>
-                    <option value="Disciplinas">Disciplinas</option>
-                    <option value="Todas">Todas</option>
-                    <option value="Matematica">Matemática</option>
-                    <!-- As matérias tem q vir da API - list da tabela disciplina - as q tao aq é só para exemplo do css, dps tem q apagar-->
-                </select>
+                   <img src="images/search.png" class="search-icon">
+                <form>
+                    <input id="pesquisaMatricula" type="text" placeholder="Pesquisar matrículas">
+                    <button type="button"
+                        onclick="findStudent(document.getElementById('pesquisaMatricula').value)">
+                        Buscar
+                    </button>
+ <button type="button" onclick="clearSearch()">
+                        Limpar
+                    </button>    </form>
+
             </section>
         </div>
-    
+
         <div class="students-info">
             <h1>Alunos</h1>
         </div>
 
-        <!-- Adicionar tabela aqui -->
+
+        <!-- TABELA -->
+
         <table id="studentsTable" width="100%" border="1">
+
             <thead>
+
                 <tr>
                     <th>Nome</th>
                     <th>Matrícula</th>
+                    <th>E-mail</th>
                     <th>Ações</th>
                 </tr>
+
             </thead>
-            <tbody>
-                <!-- Os alunos serão inseridos aqui pela função listStudents() -->
+
+            <tbody id="tabela-alunos">
+                <!-- JS preenche -->
             </tbody>
+
         </table>
-    
+
+        <!-- POPUP EDITAR ALUNO -->
+
+<div id="popupAluno" class="popUp">
+
+    <div class="popAluno">
+
+        <h1>Editar Aluno</h1>
+
+        <section>
+            <h2>Nome</h2>
+            <input id="studentName" type="text" required>
+        </section>
+
+        <section>
+            <h2>Email</h2>
+            <input id="studentEmail" type="email" required>
+        </section>
+
+        <section>
+            <h2>Senha</h2>
+            <input id="studentPassword" type="password">
+        </section>
+
+        <button onclick="cadastrarAluno(event)">
+            Salvar
+        </button>
+
+        <button onclick="closePopup('popupAluno')">
+            Cancelar
+        </button>
+
+    </div>
+
+</div>
+
+
+
+        <!-- POPUP OBSERVAÇÃO -->
+
         <div id="popupInfo" class="popUp">
+
             <div class="popInfo">
+
                 <h1>Observação</h1>
-                <textarea placeholder="Adicionar observação"></textarea>
-                <button>Adicionar</button>
-                <button onclick="fecharPopup('popupInfo')">Cancelar</button>
+
+<textarea id="textoObservacao" placeholder="Adicionar observação">
+                </textarea>
+
+                <button onclick="adicionarObservacao()">
+                    Adicionar
+                </button>
+
+                <button onclick="closePopup('popupInfo')">
+                    Cancelar
+                </button>
+
             </div>
+
         </div>
+
+
+
+        <!-- POPUP NOTAS -->
 
         <div id="popupGrades" class="popUp">
+
             <div class="popGrades">
+
                 <h1>Lançar Notas</h1>
-    
+
                 <section>
                     <h2>N1</h2>
-                    <input type="number" required>
+                    <input id="nota1" type="number" required>
                 </section>
-    
+
                 <section>
                     <h2>N2</h2>
-                    <input type="number" required>
+                    <input id="nota2" type="number" required>
                 </section>
-    
+
                 <section>
                     <h2>Média final</h2>
-                    <input type="number" required>
+                    <input id="mediaFinal" type="number" required>
                 </section>
-    
-                <button>Lançar</button>
-                <button onclick="fecharPopup('popupGrades')">Cancelar</button>
+
+                <button onclick="lancarNotas()">
+                    Lançar
+                </button>
+
+                <button onclick="closePopup('popupGrades')">
+                    Cancelar
+                </button>
+
             </div>
+
         </div>
 
-        <!-- BOTÕES PARA ABRIR -->
 
-        <!--Esses onclick nao vao ser botao, vão ser ligados aos textos que estarão na tabela -->
-        <!-- <button onclick="abrirPopup('popupInfo')">Abrir observações</button>
-        <button onclick="abrirPopup('popupGrades')">Abrir notas</button>     -->
+    </div>
 
-    </container>
 
-    <!-- SCRIPT PARA FAZER A TABELA FUNCIONAR -->
+    <!-- SCRIPT DA PÁGINA -->
+
     <script>
 
-        token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
-        window.alert(token);
+        if (!token) {
 
-        if(token != null) {
-            window.onload = function () {
-                listStudents(token);
-            };
+            alert("Você precisa fazer login");
+            window.location.href = "Login.html";
+
         } else {
-            window.location.href = "Initial.html";
+
+            listStudents();
+
         }
+
     </script>
 
+
 </body>
+
 </html>
