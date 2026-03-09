@@ -707,9 +707,17 @@ function listarObservacoes() {
             `;
 
                 tbody.appendChild(tr);
-
             });
 
         })
         .catch(err => alert("Error listing observations: " + err.message));
+
+ fecharPopup("popupProfessor");
+}
+
+function clearSearch() {
+
+    document.getElementById("pesquisaMatricula").value = "";
+
+    listStudents()
 }

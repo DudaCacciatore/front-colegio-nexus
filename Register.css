@@ -39,11 +39,12 @@ form {
     width: 80%;
     align-items: center;
     text-align: center;
+}
 
-    a{
-        color: #092228;
-        text-decoration: none;
-    }
+form a,
+#signIn-forms a {
+    color: #092228;
+    text-decoration: none;
 }
 
 input {
