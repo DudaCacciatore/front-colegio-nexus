@@ -682,33 +682,6 @@ function loginTeacher(usuario, password) {
         });
 }
 
-function verifyUser(user, password) {
-
-    const emailRegexStudent = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const atStartRegexAdmin = /^@[a-zA-Z0-9_]+$/;
-    const teacherRegex = /^[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+$/;
-
-    if (emailRegexStudent.test(user)) {
-
-        loginStudent(user, password);
-
-    }
-    else if (atStartRegexAdmin.test(user)) {
-
-        loginAdmin(user, password);
-
-    }
-    else if (teacherRegex.test(user)) {
-
-        loginTeacher(user, password);
-
-    }
-    else {
-
-        alert("Formato de usuário inválido");
-
-    }
-
 //OBSERVAÇÕES
 function listarObservacoes() {
 
@@ -739,28 +712,4 @@ function listarObservacoes() {
 
         })
         .catch(err => alert("Error listing observations: " + err.message));
-}
-
-
-                const tr = document.createElement("tr");
-
-                tr.innerHTML = `    
-                <td>${student.nome}</td>
-                <td>${student.matricula}</td>
-                <td>${student.email}</td>
-                <td>
-                    <button onclick="editStudent('${student.matricula}','${student.nome}','${student.email}')">
-                        Edit
-                    </button><button onclick="deleteStudent('${student.matricula}')">
-                        Delete
-                    </button>
-                </td>
-            `;
-
-                tbody.appendChild(tr);
-
-            });
-
-        })
-        .catch(err => alert("Error listing students: " + err.message));
 }
