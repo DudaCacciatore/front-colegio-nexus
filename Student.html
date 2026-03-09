@@ -8,6 +8,9 @@
     <link rel="icon" href="images/logo.svg">
     <link rel="stylesheet" href="Header.css">
     <link rel="stylesheet" href="Student.css">
+    <!-- jsPDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 </head>
 
 <body>
@@ -32,7 +35,6 @@
             <button>Gerar boletim</button>
         </div>
 
-        <!-- Aqui vem a tabela que vai ser feita no js -->
 
         <!-- Observações -->
         <h1>Observações</h1>
@@ -41,14 +43,10 @@
             <input type="text" placeholder="Pesquisar observações por professor">
         </section>
 
-        <!-- Tem q colocar os bloquinhos com as observações -->
     </container>
 
-    <script>
-        onload = function() {
-            
-        };
-    </script>
+    <script src="Student.js"></script>
+
 </body>
 
 </html>
