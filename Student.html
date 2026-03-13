@@ -35,15 +35,22 @@
 
     <!-- Main Content -->
     <div class="main-content">
-
-        <div class="actionButton">
-            <button id="boletimButtom">Gerar boletim</button>
-        </div>
-
+        <div class="actionButton"> <button id="boletimButtom">Gerar boletim</button> </div>
+        <h1>Boletim</h1>
+        <table id="boletim">
+            <thead>
+                <tr>
+                    <th>Disciplina</th>
+                    <th>N1</th>
+                    <th>N2</th>
+                    <th>Média</th>
+                    <th>Situação</th>
+                </tr>
+            </thead> 
+            <tbody id="tabela-alunos"></tbody>
+        </table> <br>
         <h1>Observações</h1>
-
         <div id="observacoes-container" class="observacoes-container"></div>
-
     </div>
 
     <!-- Scripts -->
@@ -53,6 +60,11 @@
         document.addEventListener("DOMContentLoaded", function () {
             listarObservacoes();
         });
+
+        // aparecer boletim
+        onload = function () {
+            mostrarBoletim();
+        };
     </script>
 
 </body>
