@@ -617,6 +617,7 @@ function loginStudent(email, password) {
         .then(dados => {
 
             localStorage.setItem("token", dados.token);
+            localStorage.setItem("studentId", dados.id_aluno);
 
             alert("Login aluno realizado!");
             redirect("Student.html");
@@ -685,7 +686,9 @@ function loginTeacher(usuario, password) {
 //OBSERVAÇÕES
 function listarObservacoes() {
 
-    fetch(urlBase + "/observacao/list", {
+    const idAluno = localStorage.getItem("studentId");
+
+    fetch(urlBase + "/observacao/findObservacaoAluno/" + idAluno, {
         method: "GET",
         headers: {
             "Authorization": "Bearer " + getToken()
