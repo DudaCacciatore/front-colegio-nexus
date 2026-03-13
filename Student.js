@@ -1,5 +1,3 @@
-const urlBase = "https://proj-diegoback.onrender.com";
-
 async function gerarBoletim({ 
     nomeAluno, 
     turmaAluno, 
@@ -79,29 +77,68 @@ window.onload = function() {
                 }
 
                 const payload = decodificarJWT(token);
+                if (!payload) {
+                    alert("Token inválido!");
+                    return;
+                }
+
                 const emailAluno = payload?.sub || payload?.email;
+                console.log("Email do token:", emailAluno);
                 
                 const alunoResponse = await fetch(`${urlBase}/aluno/list`, {
                     headers: { "Authorization": "Bearer " + token }
                 });
                 
+                if (!alunoResponse.ok) {
+                    throw new Error(`Erro ao buscar alunos: ${alunoResponse.status}`);
+                }
+
                 const alunos = await alunoResponse.json();
+                console.log("Alunos encontrados:", alunos);
+
                 const alunoAtual = alunos.find(a => a.email === emailAluno);
+                
+                if (!alunoAtual) {
+                    alert("Aluno não encontrado no banco de dados!");
+                    console.error("Email procurado:", emailAluno);
+                    console.error("Emails disponíveis:", alunos.map(a => a.email));
+                    return;
+                }
+
                 const matricula = alunoAtual.matricula;
+                console.log("Matrícula do aluno:", matricula);
                 
                 const boletinsResponse = await fetch(`${urlBase}/boletim/list`, {
                     headers: { "Authorization": "Bearer " + token }
                 });
                 
+                if (!boletinsResponse.ok) {
+                    throw new Error(`Erro ao buscar boletins: ${boletinsResponse.status}`);
+                }
+
                 const boletins = await boletinsResponse.json();
+                console.log("Boletins encontrados:", boletins);
+
                 const boletinsAluno = boletins.filter(b => b.id_aluno === matricula);
+                console.log("Boletins do aluno:", boletinsAluno);
+
+                if (boletinsAluno.length === 0) {
+                    alert("Nenhum boletim encontrado para este aluno!");
+                    return;
+                }
                 
                 // Buscar disciplinas para mapear nomes
                 const disciplinasResponse = await fetch(`${urlBase}/disciplina/list`, {
                     headers: { "Authorization": "Bearer " + token }
                 });
                 
+                if (!disciplinasResponse.ok) {
+                    throw new Error(`Erro ao buscar disciplinas: ${disciplinasResponse.status}`);
+                }
+
                 const disciplinas = await disciplinasResponse.json();
+                console.log("Disciplinas encontradas:", disciplinas);
+
                 const mapDisciplinas = disciplinas.reduce((acc, d) => {
                     acc[d.id] = d.nome;
                     return acc;
@@ -109,22 +146,27 @@ window.onload = function() {
                 
                 const dados = {
                     nomeAluno: alunoAtual.nome,
-                    turmaAluno: "Turma não informada",
+                    turmaAluno: alunoAtual.turma || "Turma não informada",
                     anoLetivo: new Date().getFullYear(),
                     escola: "Colégio Nexus",
                     materias: boletinsAluno.map(b => ({
                         materia: mapDisciplinas[b.id_disciplina] || `Disciplina ${b.id_disciplina}`, 
-                        n1: b.n1,
-                        n2: b.n2,
-                        media: b.media,
-                        situacao: b.media >= 7 ? "Aprovado" : "Reprovado"
+                        n1: b.n1 || 0,
+                        n2: b.n2 || 0,
+                        media: b.media || 0,
+                        situacao: (b.media || 0) >= 7 ? "Aprovado" : "Reprovado"
                     }))
                 };
-                
+
+                console.log("Dados do boletim:", dados);
                 await gerarBoletim(dados);
+                alert("✅ Boletim gerado com sucesso!");
             } catch (error) {
-                alert(`Erro ao gerar boletim: ${error.message}`);
+                console.error("Erro ao gerar boletim:", error);
+                alert(`❌ Erro ao gerar boletim: ${error.message}`);
             }
         });
+    } else {
+        console.error("Botão de boletim não encontrado!");
     }
 };
