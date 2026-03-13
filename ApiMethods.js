@@ -617,7 +617,7 @@ function loginStudent(email, password) {
         .then(dados => {
 
             localStorage.setItem("token", dados.token);
-            localStorage.setItem("studentId", dados.id_aluno);
+            localStorage.setItem("studentId", dados.matricula);
 
             alert("Login aluno realizado!");
             redirect("Student.html");
@@ -684,6 +684,21 @@ function loginTeacher(usuario, password) {
 }
 
 //OBSERVAÇÕES
+function buscarProfessor(idProfessor) {
+
+    return fetch(urlBase + "/professor/findProfessor/" + idProfessor, {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + getToken()
+        }
+    })
+    .then(res => res.json())
+    .then(p => {
+        const primeiroNome = p[0].nome.split(" ")[0];
+        return primeiroNome;
+    });
+}
+
 function listarObservacoes() {
 
     const idAluno = localStorage.getItem("studentId");
@@ -694,25 +709,31 @@ function listarObservacoes() {
             "Authorization": "Bearer " + getToken()
         }
     })
-        .then(res => res.json())
-        .then(observacoes => {
+    .then(res => res.json())
+    .then(observacoes => {
 
-            const tbody = document.getElementById("tabela-observacoes");
-            tbody.innerHTML = "";
+        const container = document.getElementById("observacoes-container");
+        container.innerHTML = "";
 
-            observacoes.forEach(observacao => {
+        observacoes.forEach(observacao => {
 
-                const tr = document.createElement("tr");
+            buscarProfessor(observacao.id_professor)
+            .then(nomeProfessor => {
 
-                tr.innerHTML = `
-                <h1>Observação ${observacao.professor}</h1>
-                <p>${observacao.descricao}</p>
-            `;
+                const card = document.createElement("div");
+                card.classList.add("observacao-card");
 
-                tbody.appendChild(tr);
+                card.innerHTML = `
+                    <h3>Professor ${nomeProfessor}</h3>
+                    <p>${observacao.descricao}</p>
+                `;
+
+                container.appendChild(card);
 
             });
 
-        })
-        .catch(err => alert("Error listing observations: " + err.message));
+        });
+
+    })
+    .catch(err => alert("Erro ao listar observações: " + err.message));
 }

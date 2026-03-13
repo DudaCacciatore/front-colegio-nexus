@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Aluno</title>
+    <script src="ApiMethods.js"></script>
+    <script src="Student.js"></script>
     <link rel="icon" href="images/logo.svg">
     <link rel="stylesheet" href="Header.css">
     <link rel="stylesheet" href="Student.css">
+    <!-- jsPDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 </head>
 
 <body>
@@ -27,21 +32,17 @@
     <!-- Main Content -->
     <container class="main-content">
 
-        <!-- Gerar boletim -->
-        <div class="actionButton">
-            <button>Gerar boletim</button>
-        </div>
+    <div class="actionButton">
+        <button id="boletimButtom">Gerar boletim</button>
+    </div>
 
-        <!-- Aqui vem a tabela que vai ser feita no js -->
+    <h1>Observações</h1>
 
-        <!-- Observações -->
-        <h1>Observações</h1>
+    <div id="observacoes-container" class="observacoes-container"></div>
 
-        <!-- Tem q colocar os bloquinhos com as observações -->
-    </container>
-
+</container>
     <script>
-        onload = function() {
+        onload = function () {
             listarObservacoes();
         }
     </script>
