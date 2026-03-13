@@ -428,6 +428,46 @@ function listStudents() {
         })
         .catch(err => alert("Error listing students: " + err.message));
 }
+
+
+
+
+function mostrarBoletim() {
+
+    fetch(urlBase + "/aluno/notas/" + localStorage.getItem("studentId"), {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + getToken()
+        }
+    })
+        .then(res => res.json())
+        .then(grades => {
+
+            const tbody = document.getElementById("tabela-alunos");
+            tbody.innerHTML = "";
+
+            grades.disciplinas.forEach(grade => {
+
+                const tr = document.createElement("tr");
+
+                const situacao = grade.media >= 6 ? "Aprovado" : "Reprovado";
+
+                tr.innerHTML = `    
+                    <td>${grade.disciplina}</td>
+                    <td>${grade.n1}</td>
+                    <td>${grade.n2}</td>
+                    <td>${grade.media}</td>
+                    <td>${situacao}</td>
+                `;
+
+                tbody.appendChild(tr);
+
+            });
+
+        })
+        .catch(err => alert("Error loading grades: " + err.message));
+}
+
 function listStudentsTeachers() {
 
     fetch(urlBase + "/aluno/list", {
