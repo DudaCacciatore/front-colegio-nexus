@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Aluno</title>
     <script src="ApiMethods.js"></script>
+    <script src="Student.js"></script>
     <link rel="icon" href="images/logo.svg">
     <link rel="stylesheet" href="Header.css">
     <link rel="stylesheet" href="Student.css">
@@ -31,31 +32,23 @@
     <!-- Main Content -->
     <container class="main-content">
 
-        <!-- Gerar boletim -->
-        <div class="actionButton">
-            <button id="boletimButtom">Gerar boletim</button>
-        </div>
+    <div class="actionButton">
+        <button id="boletimButtom">Gerar boletim</button>
+    </div>
 
-        <!-- Observações -->
-        <h1>Observações</h1>
-        <section class="search">
-            <img src="images/search.png" alt="">
-            <form>
-                <input type="text" placeholder="Pesquisar observações por professor">
-                <button type="button"
-                    onclick="findStudent(document.getElementById('').value)">
-                    Buscar
-                </button>
-                <button type="button" onclick="clearSearch()">
-                    Limpar
-                </button>
-            </form>
-        </section>
+    <h1>Observações</h1>
+
+    <div id="observacoes-container" class="observacoes-container"></div>
 
     </container>
 
-    <!-- Importar Student.js -->
+    
     <script src="Student.js"></script>
+    <script>
+        onload = function () {
+            listarObservacoes();
+        }
+    </script>
 </body>
 
 </html>

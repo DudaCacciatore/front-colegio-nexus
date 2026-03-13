@@ -617,6 +617,7 @@ function loginStudent(email, password) {
         .then(dados => {
 
             localStorage.setItem("token", dados.token);
+            localStorage.setItem("studentId", dados.matricula);
 
             alert("Login aluno realizado!");
             redirect("Student.html");
@@ -683,41 +684,56 @@ function loginTeacher(usuario, password) {
 }
 
 //OBSERVAÇÕES
-function listarObservacoes() {
+function buscarProfessor(idProfessor) {
 
-    fetch(urlBase + "/observacao/list", {
+    return fetch(urlBase + "/professor/findProfessor/" + idProfessor, {
         method: "GET",
         headers: {
             "Authorization": "Bearer " + getToken()
         }
     })
-        .then(res => res.json())
-        .then(observacoes => {
-
-            const tbody = document.getElementById("tabela-observacoes");
-            tbody.innerHTML = "";
-
-            observacoes.forEach(observacao => {
-
-                const tr = document.createElement("tr");
-
-                tr.innerHTML = `
-                <h1>Observação ${observacao.professor}</h1>
-                <p>${observacao.descricao}</p>
-            `;
-
-                tbody.appendChild(tr);
-            });
-
-        })
-        .catch(err => alert("Error listing observations: " + err.message));
-
- fecharPopup("popupProfessor");
+    .then(res => res.json())
+    .then(p => {
+        const primeiroNome = p[0].nome.split(" ")[0];
+        return primeiroNome;
+    });
 }
 
-function clearSearch() {
+function listarObservacoes() {
 
-    document.getElementById("pesquisaMatricula").value = "";
+    const idAluno = localStorage.getItem("studentId");
 
-    listStudents()
+    fetch(urlBase + "/observacao/findObservacaoAluno/" + idAluno, {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + getToken()
+        }
+    })
+    .then(res => res.json())
+    .then(observacoes => {
+
+        const container = document.getElementById("observacoes-container");
+        container.innerHTML = "";
+
+        observacoes.forEach(observacao => {
+
+            buscarProfessor(observacao.id_professor)
+            .then(nomeProfessor => {
+
+                const card = document.createElement("div");
+                card.classList.add("observacao-card");
+
+                card.innerHTML = `
+                    <h3>Professor ${nomeProfessor}</h3>
+                    <p>${observacao.descricao}</p>
+                `;
+
+                container.appendChild(card);
+
+            });
+
+        });
+
+    })
+    .catch(err => alert("Erro ao listar observações: " + err.message));
 }
